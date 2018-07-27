@@ -12,7 +12,7 @@ const path         = require('path');
 
 mongoose.Promise = Promise;
 mongoose
-  .connect('mongodb://localhost/todo-list-api', {useMongoClient: true})
+  .connect('mongodb://localhost/todolistapi', {useMongoClient: true})
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {
@@ -53,6 +53,9 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 const index = require('./routes/index');
 app.use('/', index);
+
+const taskRoutes = require('./routes/tasks');
+app.use('/api', taskRoutes)
 
 
 module.exports = app;
